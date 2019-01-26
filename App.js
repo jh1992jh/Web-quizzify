@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { StyleSheet, Text, View, Image, Button, StatusBar} from 'react-native';
 
 import { Provider } from 'react-redux';
 import { NativeRouter, Route } from 'react-router-native';
@@ -8,6 +7,7 @@ import store from './store';
 import Home from './components/Home';
 import QuestionBox from './components/QuestionBox';
 import Results from './components/Results';
+import Progress from './components/Progress';
 
 
 class App extends Component {
@@ -25,6 +25,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/questions" component={QuestionBox} />
             <Route exact path="/results" component={Results} />
+            <Route exact path="/progress" component={Progress} />
           </Fragment>
         </NativeRouter>
       </Provider>

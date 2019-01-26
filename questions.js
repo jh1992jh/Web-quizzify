@@ -1,5 +1,3 @@
-import uuid from 'react-native-uuid';
-
 export const questions = [
     {
         question: "Who designed the scripting language JavaScript?",
@@ -21,7 +19,7 @@ export const questions = [
                 correct: false
             }
         ],
-        id: uuid.v4() + Math.random()
+        id: 1
     },
     {
         question: 'Which of the following elements is used when you want to add a paragraph to a HTML page?',
@@ -43,7 +41,7 @@ export const questions = [
                 correct: false
             }
         ],
-        id: uuid.v4() + Math.random()
+        id: 2
     },
     {
         question: 'HTML stands for?',
@@ -65,7 +63,7 @@ export const questions = [
                 correct: false
             }
         ],
-        id: uuid.v4() + Math.random()
+        id: 3
     },
     {
         question: 'In HTTPS what does the "S" stand for?',
@@ -87,6 +85,6 @@ export const questions = [
                 correct: true
             }
         ],
-        id: uuid.v4() + Math.random()
+        id: 4
     }
 ]

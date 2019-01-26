@@ -1,10 +1,58 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, FlatList, TouchableOpacity, AsyncStorage } from 'react-native';
 import { connect } from 'react-redux';
 
 import AnswerWrapper from './AnswerWrapper';
  
 class Results extends Component {
+    componentDidMount() {
+        const { correctAnswers } = this.props.questions;
+       /* const num = new Date().getDay();
+
+        let day;
+        switch(num) {
+            case 1:
+                day = 'Monday'
+                break;
+            case 2: 
+                day = 'Tuesday'
+                break;
+            case 3:
+                day = 'Wednesday'
+                break;
+            case 4: 
+                day = 'Thursday'
+                break;
+            case 5:
+                day = 'Friday'
+                break;
+            case 6: 
+                day = 'Saturday'
+                break;
+            case 7: 
+                day = 'Sunday'
+                break;
+        }
+
+        storeScore = async () => {
+            try {
+                await AsyncStorage.setItem(day.toString(), num.toString())
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        /* removeScore = async () => {
+            try {
+                await AsyncStorage.removeItem('Friday')
+            } catch (err) {
+                console.log(err)
+            }
+        } */
+       // AsyncStorage.clear()
+       // storeScore()
+       // removeScore() 
+    }
 
     _keyExtractor = (item, index) => index.toString();
   render() {
@@ -30,7 +78,7 @@ class Results extends Component {
         <View style={styles.correctAmount}>
             <Text style={styles.correctAmountTxt}>Correct Answers: {' ' + `${correctAnswers + 1}`}</Text>
         </View>
-        <TouchableOpacity style={styles.next} onPress={() => this.props.history.push('/')}>
+        <TouchableOpacity style={styles.next} onPress={() => this.props.history.push('/progress')}>
         <Text style={styles.nextTxt}>Next</Text>
         </TouchableOpacity>
       </View>
