@@ -15,35 +15,36 @@ class QuestionBox extends Component {
     chooseAnswer = (i) => {
         const { questionIndex, correct } = this.state;
         const qAnswer = this.props.questions.questions[questionIndex].options[i].correct
-        //console.log(this.props.questions.questions[0].options[i]);
-        if(qAnswer) {
-            this.setState({correct: qAnswer })
-        } else if(!qAnswer) {
-            this.setState({correct: qAnswer })
-            this.props.wrongAnswer()             
-        } 
-
         const answer = {
             question: this.props.questions.questions[questionIndex].question,
             correct: qAnswer,
             chosenOption: this.props.questions.questions[questionIndex].options[i].answer,
             id: this.props.questions.questions[questionIndex].id
         } 
+
         this.props.chosenAnswer(answer)
+        if(qAnswer == true) {
+            this.setState({correct: qAnswer }, () => {
+                this.props.correctAnswer();
+                if(this.props.questions.correctAnswers === this.props.questions.questions.length - 1 ) {
+                    this.props.history.push('/results')
+                }
+            })
+        } else if(qAnswer === false) {
+            this.setState({correct: qAnswer })
+            this.props.wrongAnswer()             
+        } 
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.questions.wrongAnswers === 3) {
             this.props.history.push('/results')
-        } else if (this.state.questionIndex === nextProps.questions.questions.length - 1) {
-            this.props.history.push('/results')
-        }
+        } 
     }   
 
     newQuestion = () => {
         const { questionIndex } = this.state;
         this.setState({ questionIndex: questionIndex + 1, correct: null});
-        this.props.correctAnswer();
     }
   render() {
       const { correct, questionIndex } = this.state;

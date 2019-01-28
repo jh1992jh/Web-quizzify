@@ -13,7 +13,7 @@ export default function(state = initialState, action) {
         case CORRECT_ANSWER: 
             return {
                 ...state,
-                correctAnswers: state.correctAnswers + 1
+                correctAnswers: state.answers.filter(answer => answer.correct === true).length
             }
         case WRONG_ANSWER: 
             return {

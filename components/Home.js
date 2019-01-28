@@ -10,18 +10,24 @@ import Logo from '../webquiz-logo.png';
 class Home extends Component {
     componentDidMount() {
         this.props.resetGame();
-        const keysZero = AsyncStorage._getKeys.length === 0;
-        if(keysZero) {
-            AsyncStorage.multiSet([['Monday', '0'], ['Tuesday', '0'], ['Wednesday', '0'], ['Thursday', '0'], ['Friday', '0'], ['Saturday', '0'], ['Sunday', '0'] ])
-        } 
-        console.log(keysZero)
+        // HERE FOR CLEAR SCORE FUNCTION THAT I MIGHT IMPLIMENT LATER
+       /*clearAsyncStorage = async() => {
+        AsyncStorage.clear();
+    }
+    clearAsyncStorage() */
+    
+        AsyncStorage.getItem('Mon', (err, result) => {
+            if(result === null) {
+                AsyncStorage.multiSet([['Mon', '0'], ['Tue', '0'], ['Wed', '0'], ['Thu', '0'], ['Fri', '0'], ['Sat', '0'], ['Sun', '0'] ])
+            }
+        }) 
     }
   render() {
     return (
         <View style={styles.container}>
             <Image style={styles.logo} source={Logo} />
             <TouchableOpacity style={styles.play}>
-                <Link to="questions">
+                <Link to="/questions">
                     <Text style={styles.playTxt}>Play</Text> 
                 </Link> 
             </TouchableOpacity>           

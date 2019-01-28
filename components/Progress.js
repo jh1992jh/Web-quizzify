@@ -1,31 +1,37 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, AsyncStorage } from 'react-native';
+import { Text, View, StyleSheet, AsyncStorage, TouchableOpacity, Button } from 'react-native';
+import { Link } from 'react-router-native';
 import { BarChart, XAxis, YAxis } from 'react-native-svg-charts';
 
 import Chart from './Chart';
 
 class Progress extends Component {
+    state = {
+      dataPoints: []
+    }
     componentDidMount() {
-        console.log(AsyncStorage._getKeys)
-               
         AsyncStorage.getAllKeys((err, keys) => {
             AsyncStorage.multiGet(keys, (err, stores) => {
+              this.setState({ dataPoints: stores.reduce((acc, val) => acc.concat(val))})
               stores.map((result, i, store) => {
-                // get at each store's key/value so you can work with it
                 let key = store[i][0];
                 let value = store[i][1];
-                console.log(key, value)
               });
             });
           });
-    
     }
-  render() {
-      const data = [2,3,1,4,5,6,7];
-      const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  render() { 
+    const { dataPoints } = this.state;
     return (
       <View style={styles.container}>
-        <Chart />
+
+        <Chart dataPoints={dataPoints} />
+        
+        <TouchableOpacity style={styles.home}>
+                <Link to="/">
+                    <Text style={styles.homeTxt}>Home</Text> 
+                </Link> 
+            </TouchableOpacity> 
       </View>
     )
   }
@@ -37,26 +43,22 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         paddingTop: 50
-    }
+    },
+    home: {
+      borderWidth: 2,
+      borderColor: '#37ccc9',
+      minWidth: 250,
+      paddingLeft: 30,
+      paddingRight: 30,
+      paddingTop: 15,
+      paddingBottom: 15,
+      marginTop: 30
+  },
+  homeTxt: {
+      color: '#37ccc9',
+      fontSize: 30,
+      textAlign: 'center'
+  }
 })
-
-
-/* 
-<BarChart 
-        data={data}
-        gridMin={0}
-        contentInset={{ top: 10, bottom: 10 }}
-        style={{flex: 1, width: 300}}
-        svg={{ fill: '#37ccc9' }}
-        />
-        
-        <XAxis 
-        data={days}
-        formatLabel={ (value, i) => `${days[i]}` }
-        style={{flex: 1, width: 300}}
-        contentInset={{ left: 10, right: 10 }}
-        svg={{ fontSize: 10, fill: '#eee' }}
-        />
-*/
 
 export default Progress

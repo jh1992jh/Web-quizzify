@@ -86,5 +86,93 @@ export const questions = [
             }
         ],
         id: 4
-    }
+    },
+    {
+        question: 'CSS Unit rem is?',
+        options: [
+            {
+                answer: 'Relative to 1% of the width of the viewport',
+                correct: false
+            },
+            {
+                answer: 'Relative to the font-size of the element',
+                correct: false
+            },
+            {
+                answer: 'Relative to font-size of the root element',
+                correct: true
+            },
+            {
+                answer: 'Relative to 1% of the height of the viewport',
+                correct: false
+            },
+        ],
+        id: 5
+    },
+    {
+        question: 'Which of these ways is the correct way to declare a CSS class for a HTML element?',
+        options: [
+            {
+                answer: 'class="center"',
+                correct: true
+            },
+            {
+                answer: 'css-class="center"',
+                correct: false
+            },
+            {
+                answer: 'class-title="center"',
+                correct: false
+            },
+            {
+                answer: 'element-class="center"',
+                correct: false
+            },
+        ],
+        id: 6
+    },
+    {
+        question: 'Given this array [1,4,3,5,6,7,7,8], what is the value at index 5?',
+        options: [
+            {
+                answer: '1',
+                correct: false
+            },
+            {
+                answer: '3',
+                correct: false
+            },
+            {
+                answer: '7',
+                correct: true
+            },
+            {
+                answer: '8',
+                correct: false
+            }
+        ],
+        id: 7
+    },
+    {
+        question: 'What is this, const coolThing () => console.log("cool") called in JavaScript?',
+        options: [
+            {
+                answer: 'Method',
+                correct: false
+            },
+            {
+                answer: 'Arrow function',
+                correct: true
+            },
+            {
+                answer: 'Array',
+                correct: false
+            },
+            {
+                answer: 'Dictionary',
+                correct: false
+            }
+        ],
+        id: 8
+    }   
 ]

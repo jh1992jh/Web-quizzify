@@ -5,15 +5,16 @@ import ChartLine from './ChartLine';
 
 class Chart extends Component {
   render() {
+    const { dataPoints } = this.props;
     return (
       <View style={styles.container}>
-        <ChartLine points="5" day="Mon" />
-        <ChartLine points="7" day="Tue" />
-        <ChartLine points="18" day="Wed"/>
-        <ChartLine points="3" day="Thu" />
-        <ChartLine points="22" day="Fri" />
-        <ChartLine points="15" day="Sat" />
-        <ChartLine points="28" day="Sun" />
+        <ChartLine points={dataPoints} day="Mon" />
+        <ChartLine points={dataPoints} day="Tue" />
+        <ChartLine points={dataPoints} day="Wed"/>
+        <ChartLine points={dataPoints} day="Thu" />
+        <ChartLine points={dataPoints} day="Fri" />
+        <ChartLine points={dataPoints} day="Sat" />
+        <ChartLine points={dataPoints} day="Sun" />
       </View>
     )
   }
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-end',  
         width: 300,
-        maxHeight: 300
+        maxHeight: 450
     },
     bar: {
         width: 42.8,
