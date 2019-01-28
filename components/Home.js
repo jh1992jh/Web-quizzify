@@ -30,7 +30,12 @@ class Home extends Component {
                 <Link to="/questions">
                     <Text style={styles.playTxt}>Play</Text> 
                 </Link> 
-            </TouchableOpacity>           
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.play}>
+                <Link to="/learn">
+                    <Text style={styles.playTxt}>Learn</Text> 
+                </Link> 
+            </TouchableOpacity>            
         </View>
     )
   }
@@ -55,7 +60,8 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         paddingRight: 30,
         paddingTop: 15,
-        paddingBottom: 15
+        paddingBottom: 15,
+        marginBottom: 15
     },
     playTxt: {
         color: '#37ccc9',

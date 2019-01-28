@@ -8,6 +8,8 @@ import Home from './components/Home';
 import QuestionBox from './components/QuestionBox';
 import Results from './components/Results';
 import Progress from './components/Progress';
+import Learn from './components/Learn';
+import CategoryPage from './components/CategoryPage';
 
 
 class App extends Component {
@@ -26,6 +28,8 @@ class App extends Component {
             <Route exact path="/questions" component={QuestionBox} />
             <Route exact path="/results" component={Results} />
             <Route exact path="/progress" component={Progress} />
+            <Route exact path="/learn" component={Learn} />
+            <Route exact path="/learn/:category" component={CategoryPage} />
           </Fragment>
         </NativeRouter>
       </Provider>
