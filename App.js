@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { BackHandler } from 'react-native';
 
 import { Provider } from 'react-redux';
 import { NativeRouter, Route } from 'react-router-native';
@@ -14,12 +15,6 @@ import CategoryPage from './components/CategoryPage';
 
 class App extends Component {
   render() {
-     
-
-    const mins = new Date().getMinutes();
-    /*<Stats />
-    <QuestionBox />*/
-      
     return (
       <Provider store={store}>
         <NativeRouter>
